@@ -1,0 +1,274 @@
+    @import "./reverse/_minix.scss";
+    @import "./reverse/common.scss";
+    aside {
+        font-size: pxTorem(14px);
+        padding: pxTorem(10px);
+        box-sizing: border-box;
+        dl {
+            dt {
+                font-size: pxTorem(17px);
+            }
+            dd {
+                @include box_flex;
+                flex-wrap: wrap;
+                p {
+                    width: auto;
+                    height: pxTorem(25px);
+                    padding: pxTorem(5px) pxTorem(15px) pxTorem(5px) pxTorem(15px);
+                    box-sizing: border-box;
+                    border-radius: pxTorem(20px);
+                    border: 1px solid #bababa;
+                    color: #bababa;
+                    line-height: pxTorem(10px);
+                    margin: pxTorem(5px);
+                }
+            }
+        }
+        .nulls {
+            margin-top: pxTorem(30px);
+        }
+        .btn_slide {
+            @include box_flex;
+            justify-content: space-around;
+            button:nth-child(1) {
+                background: #bababa;
+                width: pxTorem(90px);
+                border-radius: pxTorem(15px);
+            }
+            button:nth-child(2) {
+                background: #ffe141;
+                width: pxTorem(90px);
+                border-radius: pxTorem(15px);
+            }
+        }
+    }
+    
+    .active {
+        color: #000;
+        border: 1px solid #ffe141;
+    }
+    
+    .wrapper {
+        width: 100%;
+        height: pxTorem(666px);
+        display: flex;
+        flex-direction: column;
+        background: #f5f9fc;
+        header {
+            width: 100%;
+            background: #ffe141;
+            .nav {
+                padding: pxTorem(10px);
+                box-sizing: border-box;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                div {
+                    img {
+                        margin-top: pxTorem(10px);
+                        width: pxTorem(50px);
+                    }
+                    h3 {
+                        font-size: pxTorem(18px);
+                        font-weight: bolder;
+                    }
+                }
+                .rg {
+                    width: pxTorem(30px);
+                }
+            }
+            .cont {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .lef {
+                    padding: pxTorem(10px);
+                    box-sizing: border-box;
+                    p {
+                        font-size: pxTorem(14px);
+                        color: #000;
+                    }
+                    p:nth-child(2) {
+                        font-size: pxTorem(28px);
+                        #dear {
+                            font-size: pxTorem(16px);
+                        }
+                    }
+                }
+                .rig {
+                    padding: pxTorem(10px);
+                    box-sizing: border-box;
+                    display: flex;
+                    label {
+                        line-height: pxTorem(15px);
+                        line-height: 0;
+                        margin-left: pxTorem(5px);
+                        height: pxTorem(25px);
+                        padding: pxTorem(5px) pxTorem(15px) pxTorem(5px) pxTorem(15px);
+                        box-sizing: border-box;
+                        border-radius: pxTorem(20px);
+                        border: 1px solid #000;
+                        color: #000;
+                        font-size: pxTorem(15px);
+                        .mui-icon-arrowdown {
+                            font-weight: bold;
+                            font-size: pxTorem(15px);
+                        }
+                    }
+                }
+            }
+            .libs {
+                padding: pxTorem(10px);
+                box-sizing: border-box;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .libleft {
+                    font-size: pxTorem(13px);
+                    span {
+                        font-size: pxTorem(18px);
+                        font-weight: bold;
+                    }
+                }
+                .libright {
+                    font-size: pxTorem(15px);
+                    display: flex;
+                    .btn {
+                        display: flex;
+                        flex-direction: column;
+                        img {
+                            width: pxTorem(10px);
+                            margin: pxTorem(2px);
+                        }
+                    }
+                    .spn {
+                        font-size: pxTorem(18px);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        section {
+            .secon {
+                background: #fff;
+                padding: pxTorem(10px);
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                #offCanvasShow {
+                    img {
+                        width: pxTorem(20px);
+                    }
+                }
+                div:nth-child(2) {
+                    display: flex;
+                    p {
+                        border: 1px solid #b7b7b7;
+                        padding: pxTorem(5px) pxTorem(10px) pxTorem(5px) pxTorem(10px);
+                        box-sizing: border-box;
+                    }
+                    p:first-child {
+                        font-size: pxTorem(14px);
+                        background: #ffe141;
+                        color: #000;
+                        border-radius: pxTorem(15px) 0 0 pxTorem(15px);
+                    }
+                    p:last-child {
+                        background: #fff;
+                        font-size: pxTorem(14px);
+                        border-radius: 0 pxTorem(15px) pxTorem(15px) 0;
+                    }
+                }
+                .mui-icon-search {
+                    font-size: pxTorem(25px);
+                }
+            }
+            .lear {
+                background: #fff;
+                padding: pxTorem(10px);
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                p {
+                    font-size: pxTorem(15px);
+                }
+                p:nth-child(1) {
+                    span {
+                        padding: pxTorem(5px);
+                        box-sizing: border-box;
+                        img {
+                            width: pxTorem(25px);
+                        }
+                    }
+                    display: flex;
+                }
+            }
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            .uls {
+                width: 100%;
+                li {
+                    border-bottom: 1px solid #ccc;
+                    background: #fff;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    dl {
+                        display: flex;
+                        align-items: center;
+                        dt {
+                            padding: pxTorem(10px);
+                            box-sizing: border-box;
+                            img {
+                                width: pxTorem(45px);
+                            }
+                        }
+                        dd {
+                            font-size: pxTorem(15px);
+                        }
+                    }
+                    p {
+                        padding: 0 pxTorem(10px) 0 0;
+                        box-sizing: border-box;
+                        font-size: pxTorem(25px);
+                        color: #34d5a3;
+                    }
+                }
+            }
+        }
+        footer {
+            padding: pxTorem(10px) 0 0 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: pxTorem(60px);
+            background: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            dl {
+                line-height: pxTorem(23px);
+                dt {
+                    img {
+                        width: pxTorem(25px);
+                    }
+                }
+                dd {
+                    font-size: pxTorem(14px);
+                }
+            }
+            .posion {
+                position: absolute;
+                top: -105%;
+                left: 50%;
+                margin-left: pxTorem(-40px);
+                img {
+                    width: pxTorem(85px);
+                }
+            }
+        }
+    }

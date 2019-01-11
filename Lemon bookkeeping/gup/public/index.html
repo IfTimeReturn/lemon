@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello MUI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/mui.picker.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+    <link href="./css/mui.poppicker.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+        <!--侧滑菜单部分-->
+        <aside id="offCanvasSide" class="mui-off-canvas-left">
+            <dl class="bored">
+                <dt>收支类型</dt>
+                <dd>
+                    <p>全部支出</p>
+                    <p>全部收入</p>
+                    <p>全部其他</p>
+                </dd>
+            </dl>
+            <dl class="shure">
+                <dt>收支分类</dt>
+                <dd>
+                    <p>餐饮</p>
+                    <p>购物</p>
+                    <p>水果</p>
+                    <p>饮料</p>
+                    <p>住宿</p>
+                    <p>交通</p>
+                    <p>汽车</p>
+                    <p>医疗</p>
+                    <p>旅行</p>
+                    <p>教育</p>
+                    <p>通讯</p>
+                    <p>学习</p>
+                    <p>运动</p>
+                    <p>其他</p>
+                    <p>你</p>
+                    <p>我</p>
+                </dd>
+            </dl>
+            <dl class="nulls">
+                <dt></dt>
+                <dd>
+                    <p>薪资</p>
+                    <p>奖金</p>
+                    <p>意外所得</p>
+                    <p>其他</p>
+                    <p>阿狸</p>
+                    <p>拒绝</p>
+                    <p>自己</p>
+                    <p>来了</p>
+                </dd>
+            </dl>
+            <dl class="lover">
+                <dt>圈子</dt>
+                <dd>
+                    <p>个人账单</p>
+                </dd>
+            </dl>
+            <dl class="zeror">
+                <dt>其他</dt>
+                <dd></dd>
+            </dl>
+
+            <div class="btn_slide"><button class="revers">重置</button><button id="okn">确认</button></div>
+        </aside>
+        <!--主界面部分-->
+        <div class="mui-inner-wrap">
+            <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <div class="wrapper">
+                        <header>
+                            <div class="nav">
+                                <div>
+                                    <img src="./images/1.gif" alt="">
+                                </div>
+                                <div>
+                                    <h3>柠檬记账</h3>
+                                </div>
+                                <div class="rg"></div>
+                            </div>
+                            <div class="cont">
+                                <div class="lef">
+                                    <p>本月支出(元)</p>
+                                    <p>43224<span id="dear">.00</span></p>
+                                </div>
+                                <div class="rig">
+                                    <label id="year"><span class="vales">月</span><span class="mui-icon mui-icon-arrowdown"></span></label>
+                                    <label id="date">8-19<span class="mui-icon mui-icon-arrowdown"></span></label>
+                                </div>
+                            </div>
+                            <div class="libs">
+                                <div class="libleft">本月收入<span>9665.00</span></div>
+                                <div class="libright">
+                                    <span>本月结余</span>
+                                    <div class="btn">
+                                        <img src="./images/2.gif" alt="">
+                                        <img src="./images/3.gif" alt="">
+                                    </div>
+                                    <span class="spn">-45981.00</span></div>
+                            </div>
+                        </header>
+                        <section>
+                            <div class="secon">
+                                <div id="offCanvasShow"><img src="./images/4.gif" alt=""></div>
+                                <div>
+                                    <p>账单</p>
+                                    <p>图表</p>
+                                </div>
+                                <div class="mui-icon mui-icon-search"></div>
+                            </div>
+                            <div class="mui-table-view-cell mui-collapse">
+                                <a class="mui-navigate-right lear" href="#">
+                                    <p><span><img src="./images/5.gif" alt=""></span><span class="nowdate">01月07日</span></p>
+                                    <p>支出 <span>55646.00</span></p>
+                                </a>
+                                <div class="mui-collapse-content">
+                                    <ul class="uls">
+                                        <li>
+                                            <dl>
+                                                <dt><img src="./images/logo.gif" alt=""></dt>
+                                                <dd>薪资</dd>
+                                            </dl>
+                                            <p>9665.00</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <footer>
+                            <div class="posion"><img src="./images/circyle.gif" alt=""></div>
+                            <dl>
+                                <dt><img src="./images/9.gif" alt=""></dt>
+                                <dd>首页</dd>
+                            </dl>
+                            <dl>
+                                <dt><img src="./images/6.gif" alt=""></dt>
+                                <dd>圈子</dd>
+                            </dl>
+                            <dl>
+                                <dt><img src="./images/8.gif" alt=""></dt>
+                                <dd>发现</dd>
+                            </dl>
+                            <dl>
+                                <dt><img src="./images/7.gif" alt=""></dt>
+                                <dd>我的</dd>
+                            </dl>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <!-- 遮罩层 -->
+            <div class="mui-off-canvas-backdrop"></div>
+        </div>
+    </div>
+    <div class="mui-content-padded">
+        <div id='userResult' class="ui-alert"></div>
+    </div>
+    <script src="js/mui.min.js"></script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/mui.poppicker.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
