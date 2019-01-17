@@ -374,6 +374,46 @@ aside .btn_slide button:nth-child(2) {
   font-weight: bold;
 }
 
+.wrapper header .secon {
+  background: #fff;
+  padding: 0.26667rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper header .secon #offCanvasShow img {
+  width: 0.53333rem;
+}
+
+.wrapper header .secon div:nth-child(2) {
+  display: flex;
+}
+
+.wrapper header .secon div:nth-child(2) p {
+  border: 1px solid #b7b7b7;
+  padding: 0.13333rem 0.26667rem 0.13333rem 0.26667rem;
+  box-sizing: border-box;
+}
+
+.wrapper header .secon div:nth-child(2) p:first-child {
+  font-size: 0.37333rem;
+  background: #ffe141;
+  color: #000;
+  border-radius: 0.4rem 0 0 0.4rem;
+}
+
+.wrapper header .secon div:nth-child(2) p:last-child {
+  background: #fff;
+  font-size: 0.37333rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.wrapper header .secon .mui-icon-search {
+  font-size: 0.66667rem;
+}
+
 .wrapper section {
   width: 100%;
   flex: 1;
@@ -438,12 +478,38 @@ aside .btn_slide button:nth-child(2) {
 }
 
 .wrapper section .lear p:nth-child(1) span {
-  padding: 0.13333rem;
+  padding: 0.05333rem;
   box-sizing: border-box;
 }
 
 .wrapper section .lear p:nth-child(1) span img {
   width: 0.66667rem;
+}
+
+.wrapper section .lear dl {
+  width: 18%;
+}
+
+.wrapper section .lear dl dt {
+  font-size: 0.37333rem;
+  text-align: center;
+}
+
+.wrapper section .lear dl dd {
+  font-size: 0.37333rem;
+  text-align: center;
+}
+
+.wrapper section .lear dl:nth-child(2) {
+  color: red;
+}
+
+.wrapper section .lear dl:nth-child(3) {
+  color: #3ddda9;
+}
+
+.wrapper section .lear dl:nth-child(4) {
+  color: #cfcece;
 }
 
 .wrapper section .uls {
@@ -476,7 +542,7 @@ aside .btn_slide button:nth-child(2) {
   font-size: 0.4rem;
 }
 
-.wrapper section .uls li p {
+.wrapper section .uls li .tev {
   padding: 0 0.26667rem 0 0;
   box-sizing: border-box;
   font-size: 0.66667rem;
@@ -516,4 +582,8 @@ aside .btn_slide button:nth-child(2) {
 
 .wrapper footer .posion img {
   width: 2.26667rem;
+}
+
+#give {
+  color: #fd7a7b;
 }

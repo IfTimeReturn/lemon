@@ -148,6 +148,41 @@
                     }
                 }
             }
+            .secon {
+                background: #fff;
+                padding: pxTorem(10px);
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                #offCanvasShow {
+                    img {
+                        width: pxTorem(20px);
+                    }
+                }
+                div:nth-child(2) {
+                    display: flex;
+                    p {
+                        border: 1px solid #b7b7b7;
+                        padding: pxTorem(5px) pxTorem(10px) pxTorem(5px) pxTorem(10px);
+                        box-sizing: border-box;
+                    }
+                    p:first-child {
+                        font-size: pxTorem(14px);
+                        background: #ffe141;
+                        color: #000;
+                        border-radius: pxTorem(15px) 0 0 pxTorem(15px);
+                    }
+                    p:last-child {
+                        background: #fff;
+                        font-size: pxTorem(14px);
+                        border-radius: 0 pxTorem(15px) pxTorem(15px) 0;
+                    }
+                }
+                .mui-icon-search {
+                    font-size: pxTorem(25px);
+                }
+            }
         }
         section {
             .secon {
@@ -197,13 +232,33 @@
                 }
                 p:nth-child(1) {
                     span {
-                        padding: pxTorem(5px);
+                        padding: pxTorem(2px);
                         box-sizing: border-box;
                         img {
                             width: pxTorem(25px);
                         }
                     }
                     display: flex;
+                }
+                dl {
+                    width: 18%;
+                    dt {
+                        font-size: pxTorem(14px);
+                        text-align: center;
+                    }
+                    dd {
+                        font-size: pxTorem(14px);
+                        text-align: center;
+                    }
+                }
+                dl:nth-child(2) {
+                    color: red;
+                }
+                dl:nth-child(3) {
+                    color: #3ddda9;
+                }
+                dl:nth-child(4) {
+                    color: #cfcece;
                 }
             }
             width: 100%;
@@ -231,7 +286,7 @@
                             font-size: pxTorem(15px);
                         }
                     }
-                    p {
+                    .tev {
                         padding: 0 pxTorem(10px) 0 0;
                         box-sizing: border-box;
                         font-size: pxTorem(25px);
@@ -271,4 +326,8 @@
                 }
             }
         }
+    }
+    
+    #give {
+        color: #fd7a7b;
     }

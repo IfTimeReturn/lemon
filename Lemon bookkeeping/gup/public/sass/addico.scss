@@ -1,0 +1,157 @@
+@import "./reverse/_minix.scss";
+@import "./reverse/common.scss";
+.wraper {
+    background: #f5f9fb;
+    width: 100%;
+    height: pxTorem(666px);
+    display: flex;
+    flex-direction: column;
+    header {
+        width: 100%;
+        background: #ffe141;
+        .nav {
+            padding: pxTorem(10px);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .mui-icon-arrowright {
+                font-size: pxTorem(26px);
+                font-weight: bolder;
+            }
+            .secon {
+                font-size: pxTorem(17px);
+                font-weight: bolder;
+            }
+            .rg {
+                width: pxTorem(30px);
+            }
+        }
+        .ips {
+            border-bottom: 1px solid #fbdbfb;
+            background: #fff;
+            padding: pxTorem(10px) 0 pxTorem(10px) 0;
+            box-sizing: border-box;
+            width: 100%;
+            display: flex;
+            dl {
+                width: 25%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-shrink: 0;
+                dt {
+                    width: pxTorem(40px);
+                    height: pxTorem(40px);
+                    border-radius: 50%;
+                    background: #ffe141;
+                    text-align: center;
+                    line-height: pxTorem(45px);
+                    text-align: center;
+                }
+            }
+            input {
+                background: #fff;
+                border: 0;
+                text-align: right;
+            }
+             ::placeholder {
+                text-align: right;
+                font-size: pxTorem(14px);
+            }
+        }
+    }
+    section {
+        width: 100%;
+        flex: 1;
+        overflow-y: auto;
+        .mui-slider {
+            height: pxTorem(200px);
+            padding: pxTorem(10px);
+            box-sizing: border-box;
+            background: #fff;
+            .mui-slider-group {
+                .mui-slider-item {
+                    .dls {
+                        display: flex;
+                        flex-wrap: wrap;
+                        dl {
+                            padding: pxTorem(10px);
+                            box-sizing: border-box;
+                            width: 20%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            flex-shrink: 0;
+                            dt {
+                                width: pxTorem(40px);
+                                height: pxTorem(40px);
+                                border-radius: 50%;
+                                background: #ffe141;
+                                text-align: center;
+                                line-height: pxTorem(45px);
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .cont {
+            height: pxTorem(80px);
+            border-top: 1px solid #fafafa;
+            border-bottom: 1px solid #fafafa;
+            background: #fff;
+            padding: pxTorem(10px);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+                font-size: pxTorem(15px);
+                span {
+                    padding: pxTorem(5px);
+                    box-sizing: border-box;
+                    img {
+                        width: pxTorem(25px);
+                    }
+                }
+                display: flex;
+            }
+        }
+        .computer {
+            width: 100%;
+            height: pxTorem(70px);
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+            button {
+                width: 80%;
+                height: pxTorem(40px);
+                margin-top: pxTorem(16px);
+                background: #ffe141;
+                border-radius: pxTorem(20px);
+                border: 0;
+                color: #fff;
+                font-size: pxTorem(15px);
+            }
+        }
+    }
+}
+
+.del {
+    dt {
+        div {
+            font-weight: bolder;
+        }
+    }
+}
+
+#active {
+    background: #000;
+    color: #ffe141;
+}
+
+#ok {
+    background: #ffe141;
+}

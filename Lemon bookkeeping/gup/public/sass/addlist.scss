@@ -1,0 +1,161 @@
+@import "./reverse/_minix.scss";
+@import "./reverse/common.scss";
+.wraper {
+    width: 100%;
+    height: pxTorem(666px);
+    display: flex;
+    flex-direction: column;
+    header {
+        width: 100%;
+        background: #ffe141;
+        .nav {
+            padding: pxTorem(10px) pxTorem(10px) 0 pxTorem(10px);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            .mui-icon-arrowright {
+                font-size: pxTorem(26px);
+                font-weight: bold;
+            }
+            .secon {
+                display: flex;
+                margin: 0 auto;
+                p {
+                    border: 1px solid #000;
+                    padding: pxTorem(5px) pxTorem(10px) pxTorem(5px) pxTorem(10px);
+                    box-sizing: border-box;
+                }
+                p:first-child {
+                    font-size: pxTorem(14px);
+                    background: #ffe141;
+                    color: #000;
+                    border-radius: pxTorem(15px) 0 0 pxTorem(15px);
+                }
+                p:last-child {
+                    background: #ffe141;
+                    color: #000;
+                    font-size: pxTorem(14px);
+                    border-radius: 0 pxTorem(15px) pxTorem(15px) 0;
+                }
+            }
+            .rg {
+                width: pxTorem(30px);
+            }
+        }
+        .ips {
+            width: 100%;
+            input {
+                background: #ffe141;
+                border: 0;
+                border-bottom: 1px solid #000;
+                text-align: center;
+                font-size: pxTorem(30px);
+            }
+             ::placeholder {
+                color: #000;
+                font-size: pxTorem(30px);
+            }
+        }
+    }
+    section {
+        width: 100%;
+        flex: 1;
+        overflow-y: auto;
+        .mui-slider {
+            height: 33%;
+            padding: pxTorem(10px);
+            box-sizing: border-box;
+            background: #fff;
+            .mui-slider-group {
+                .mui-slider-item {
+                    .dls {
+                        display: flex;
+                        flex-wrap: wrap;
+                        dl {
+                            width: 25%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            flex-shrink: 0;
+                            dt {
+                                width: pxTorem(60px);
+                                height: pxTorem(60px);
+                                border-radius: 50%;
+                                background: #fbfbfb;
+                                text-align: center;
+                                line-height: pxTorem(60px);
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .cont {
+            border-top: 1px solid #fafafa;
+            border-bottom: 1px solid #fafafa;
+            background: #fff;
+            padding: pxTorem(10px);
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+                font-size: pxTorem(15px);
+                span {
+                    padding: pxTorem(5px);
+                    box-sizing: border-box;
+                    img {
+                        width: pxTorem(25px);
+                    }
+                }
+                display: flex;
+            }
+        }
+        .computer {
+            background: #fff;
+            width: 100%;
+            display: flex;
+            div:nth-child(1) {
+                width: 70%;
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    li {
+                        text-align: center;
+                        line-height: pxTorem(75px);
+                        width: 33%;
+                        height: 25%;
+                        border-left: 1px solid #ccc;
+                        border-bottom: 1px solid #ccc;
+                        font-size: pxTorem(26px);
+                    }
+                }
+            }
+            div:nth-child(2) {
+                width: 30%;
+                background: #ffe141;
+                font-size: pxTorem(26px);
+                text-align: center;
+                line-height: pxTorem(300px);
+            }
+        }
+    }
+}
+
+.del {
+    dt {
+        div {
+            font-weight: bolder;
+        }
+    }
+}
+
+#active {
+    background: #000;
+    color: #ffe141;
+}
+
+#ok {
+    background: #ffe141;
+}

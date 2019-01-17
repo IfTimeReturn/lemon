@@ -22,6 +22,9 @@ window.onload = function() {
 
     var N = new Date().getFullYear();
     var Y = new Date().getMonth() + 1;
+    var nowyear = N;
+    var nowdate = "01";
+    var nowmonth = N + "-" + nowdate;
     var now = new Date().getDate();
     nowdate.innerHTML = `${zero(Y)}月${zero(now)}日`;
     date.innerHTML = `${N}-${zero(Y)}</span><span class="mui-icon mui-icon-arrowdown"></span>`;
@@ -44,14 +47,32 @@ window.onload = function() {
                 years.innerHTML = `<span class="vales">${items[0].text}</span><span class="mui-icon mui-icon-arrowdown"></span>`;
                 var vales = document.querySelector('.vales');
                 if (vales.innerHTML == "年") {
-                    date.innerHTML = `${N}</span><span class="mui-icon mui-icon-arrowdown"></span>`;
+                    date.innerHTML = `${nowyear}</span><span class="mui-icon mui-icon-arrowdown"></span>`;
+                    old();
                     year();
                 } else {
-                    date.innerHTML = `${N}-${zero(Y)}</span><span class="mui-icon mui-icon-arrowdown"></span>`;
+                    date.innerHTML = `${nowmonth}</span><span class="mui-icon mui-icon-arrowdown"></span>`;
+                    months();
                     month();
                 }
             }, false);
         });
+    }
+
+    //年切换样式
+    function old() {
+        var lear = document.querySelector('.lear');
+        lear.innerHTML = `<p><span><img src="./images/5.gif" alt=""></span><span class="nowdate">01月15日</span></p>
+        <dl><dt>花费</dt><dd>1423.00</dd></dl>
+        <dl><dt>收入</dt><dd>1000.00</dd></dl>
+        <dl><dt>结余</dt><dd>-1423.00</dd></dl>
+        <dl><dt></dt><dd></dd></dl>`
+    }
+    //月切换样式
+    function months() {
+        var lear = document.querySelector('.lear');
+        lear.innerHTML = `<p><span><img src="./images/5.gif" alt=""></span><span class="nowdate">01月15日</span></p>
+        <p>支出 <span>55646.00</span></p>`
     }
 
     function year() {
@@ -66,6 +87,8 @@ window.onload = function() {
             m.style.display = "none";
             d.style.display = "none";
             dtPicker.show(function(items) {
+                nowyear = items.y.text;
+                nowmonth = items.y.text + "-" + nowdate;
                 date.innerHTML = items.y.text + `</span><span class="mui-icon mui-icon-arrowdown"></span>`;
             })
         })
@@ -83,6 +106,9 @@ window.onload = function() {
             m.style.display = "block";
             d.style.display = "none";
             dtPicker.show(function(items) {
+                nowyear = items.text.split("-")[0];
+                nowmonth = items.text;
+                nowdate = items.text.split("-")[1];
                 date.innerHTML = items.text + `</span><span class="mui-icon mui-icon-arrowdown"></span>`;
             })
         })
@@ -198,6 +224,38 @@ window.onload = function() {
     // ----------------------------------------------------------------------------
     var posion = document.querySelector('.posion');
     posion.addEventListener('tap', function() {
-        console.log(1);
-    })
+            window.location.href = "addlist.html";
+        })
+        //渲染账单页面
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function(res) {
+        var newstr = "";
+        var newdate = JSON.parse(res.target.responseText).message;
+        newdate.forEach(function(item) {
+            console.log(item);
+            if (item.type == 1) {
+                newstr += ` <li>
+            <dl>
+                <dt><div class="${item.icon}"></div> </dt>
+                <dd>${item.name}</dd>
+            </dl>
+            <p class="tev">${item.money}</p>
+        </li>`
+            } else {
+                newstr += ` <li>
+            <dl>
+                <dt><div class="${item.icon}"></div> </dt>
+                <dd>${item.name}</dd>
+            </dl>
+            <p id="give" class="tev">${item.money}</p>
+        </li>`
+            }
+
+        })
+        var uls = document.querySelector('.uls');
+        uls.innerHTML = newstr;
+    }
+    xhr.open('get', '/billlist');
+    xhr.send();
+
 }

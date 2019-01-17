@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/addico.css">
+    <link rel="stylesheet" href="./css/mui.min.css">
+</head>
+
+<body>
+    <div class="wraper">
+        <header>
+            <div class="nav">
+                <div class="mui-icon mui-icon-arrowleft">
+                </div>
+                <div class="secon">
+                    新建收支大类
+                </div>
+                <div class="rg"></div>
+            </div>
+            <div class="ips">
+                <dl>
+                    <dt>
+                        <div class="mui-icon mui-icon-image" id="icon"></div>
+                    </dt>
+                </dl>
+                <input type="text" placeholder="请输入分类名称" class="ipts">
+            </div>
+        </header>
+        <section>
+
+            <div class="mui-slider">
+                <div class="mui-slider-group">
+                    <div class="mui-slider-item">
+
+                    </div>
+                </div>
+                <div class="computer">
+                    <button>保存</button>
+                </div>
+                <script src="js/mui.min.js"></script>
+        </section>
+        </div>
+</body>
+
+<script>
+    //向后台请求数据库数据
+    var group = document.querySelector('.mui-slider-group');
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function(res) {
+        var date = JSON.parse(res.target.responseText);
+        render(date);
+    }
+    xhr.open('get', '/classify/addify');
+    xhr.send('');
+    var ico = document.querySelector('.mui-icon-arrowleft ');
+    var icon = document.querySelector('#icon');
+    var computer = document.querySelector('.computer button');
+    var ipts = document.querySelector('.ipts');
+
+    //返回跳转副页
+    ico.addEventListener('tap', function() {
+        window.location.href = "addlist.html";
+    });
+    //选择icon分类图标
+
+    computer.addEventListener('tap', function() {
+        if (ipts.value) {
+            var types = window.location.search.slice(1).split("=")[1];
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(res) {
+                var date = JSON.parse(res.target.responseText);
+                if (date.code == 1) {
+                    window.location.href = 'addlist.html';
+                }
+            }
+            xhr.open('post', '/money/addmoney');
+            xhr.setRequestHeader('content-type', 'application/json');
+            xhr.send(JSON.stringify({
+                name: ipts.value,
+                type: types,
+                uid: "5c3332cf5e1f60822d874414",
+                icon: icon.className
+            }));
+        } else {
+            alert(`title必须是有效字段`);
+        }
+    });
+    //渲染icon
+    function render(date) {
+        var page = date.length / 15;
+        var arr = [];
+        var str = "";
+        for (var i = 0; i < page; i++) {
+            arr.push(date.splice(0, 15))
+        }
+        arr.map(function(items) {
+            str += `<div class="mui-slider-item">
+                            <div class="dls">`;
+
+            items.map(function(item) {
+                str += `<dl>
+                    <dt>
+                         <div class="${item.icon}"></div>
+                    </dt>
+                         <dd></dd>
+                </dl>`;
+            })
+            str += `   </div>
+                    </div>`;
+        })
+
+        group.innerHTML = str;
+
+        var dls = document.querySelectorAll('.mui-icon');
+        dls.forEach(function(item) {
+            item.addEventListener('tap', function() {
+                icon.className = this.className;
+            })
+        });
+    }
+</script>
+
+</html>

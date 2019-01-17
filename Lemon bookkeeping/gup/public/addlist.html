@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/addlist.css">
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/mui.picker.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/app.css" />
+    <link href="./css/mui.poppicker.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="wraper">
+        <header>
+            <div class="nav">
+                <div class="mui-icon mui-icon-arrowleft">
+                </div>
+                <div class="secon">
+                    <p id="active">支出</p>
+                    <p>收入</p>
+                </div>
+                <div class="rg"></div>
+            </div>
+            <div class="ips">
+                <input type="text" placeholder="0.00">
+            </div>
+        </header>
+        <section>
+
+            <div id="slider" class="mui-slider">
+                <div class="mui-slider-group">
+                    <div class="mui-slider-item">
+
+                    </div>
+                </div>
+            </div>
+            <div class="cont">
+                <p><span class="conts"><img src="./images/5.gif" alt=""></span><span class="nowdate">01月07日</span></p>
+                <p><span><img src="./images/5.gif" alt=""></span><span class="nowdate">个人账单</span></p>
+                <p><span><img src="./images/5.gif" alt=""></span><span class="nowdate">不选账户</span></p>
+            </div>
+            <div class="computer">
+                <div class="golb">
+                    <ul>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>.</li>
+                        <li>0</li>
+                        <li>X</li>
+                    </ul>
+                </div>
+                <div class="finash">完成</div>
+            </div>
+        </section>
+    </div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/mui.picker.min.js"></script>
+<script src="js/mui.poppicker.js"></script>
+<script>
+    var ico = document.querySelector('.mui-icon-arrowleft ');
+    var golb = document.querySelectorAll('.golb ul li');
+    var ips = document.querySelector('.ips input');
+    var finash = document.querySelector('.finash');
+    var secon = document.querySelectorAll(".secon p");
+    var conts = document.querySelector('.conts');
+    var nowdate = document.querySelector('.nowdate');
+    var Y = new Date().getMonth() + 1; //获取当前时间
+    var now = new Date().getDate();
+    var icos;
+    var maxs;
+    var name;
+    var _id;
+    var newdatas;
+
+    nowdate.innerHTML = `${zero(Y)}月${zero(now)}日`;
+    dtPicker = new mui.DtPicker({
+        type: "date"
+    });
+    //返回跳转页面
+    ico.addEventListener('tap', function() {
+        window.location.href = "index.html";
+    });
+    //渲染icon
+    var group = document.querySelector('.mui-slider-group');
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function(res) {
+        var date = JSON.parse(res.target.responseText);
+        var newarr = [];
+        render(date, 0);
+        //点击切换收入支出
+        document.querySelectorAll('.secon p').forEach(function(itemes) {
+            itemes.addEventListener('tap', function() {
+                //初始化轮播图
+                var slider = mui('#slider').slider();
+                slider.gotoItem(0);
+                newarr = [];
+                if (this.innerHTML == "收入") {
+                    render(date, 1);
+                } else if (this.innerHTML == "支出") {
+                    render(date, 0);
+                } else {
+                    alert("error");
+                }
+            })
+        })
+    }
+    xhr.open('post', '/money/money');
+    xhr.send({});
+    //封装icon支出收入渲染
+    function render(date, max) {
+        maxs = max;
+        var newarr = [];
+        date.forEach(function(item) {
+            if (item.type == max) {
+                newarr.push(item);
+            }
+        })
+        var mage = Math.ceil((newarr.length + 1) / 8);
+        var arr = [];
+        for (var i = 0; i < mage; i++) {
+            arr.push(newarr.splice(0, 8));
+        }
+        var str = "";
+        arr.map(function(item) {
+            str += `<div class="mui-slider-item">
+                        <div class="dls">`;
+            item.map(function(items) {
+                str += ` <dl  class="dls">
+                                <dt>
+                                       <div class="${items.icon}" id="${items._id}"></div>
+                                    </dt>
+                                <dd>${items.name}</dd>
+                            </dl>`;
+            })
+            str += ` </div>
+                    </div>`;
+        });
+        group.innerHTML = str;
+        var ite = document.querySelectorAll('.mui-slider-item');
+        var itenode = ite[ite.length - 1].childNodes[1];
+        itenode.innerHTML += `<dl class="del">
+                                <dt>
+                                        <div class="mui-icon mui-icon-plusempty"></div>
+                                    </dt>
+                                <dd>
+                                    自定义
+                                </dd>
+                            </dl>`;
+        //轮播图高亮显示
+        var dls = document.querySelectorAll('.dls dl dt');
+        dls.forEach(function(item) {
+            item.addEventListener('tap', function() {
+                dls.forEach(function(items) {
+                    items.id = "";
+                });
+                this.id = "ok";
+                name = this.parentNode.childNodes[3].innerHTML;
+                icos = this.childNodes[1].className;
+                _id = this.childNodes[1].id;
+            });
+        });
+        //跳转自定义页面
+        var del = document.querySelector('.del');
+        del.addEventListener('tap', function() {
+            window.location.href = `addico.html?type=${max}`;
+        });
+    }
+
+    //点击完成判断逻辑
+    finash.addEventListener('tap', function() {
+        var dls = document.querySelectorAll('.dls dl dt');
+        var conts = 0;
+        dls.forEach(function(item) {
+            if (item.id == "ok") {
+                conts = 1;
+            }
+        });
+        if (conts == "1" && ips.value) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(res) {
+                var newstr = "";
+                var newdate = JSON.parse(res.target.responseText);
+                console.log(newdate);
+            }
+            xhr.open('post', '/addbill');
+            xhr.setRequestHeader('content-type', 'application/json');
+            xhr.send(JSON.stringify({
+                name: name,
+                type: maxs,
+                uid: "5c3332cf5e1f60822d874414",
+                money: ips.value,
+                icon: icos,
+                time: newdatas,
+                cid: _id
+            }));
+            // window.location.href = "index.html";
+        } else {
+            alert("没有选择分类或没有输入金额");
+        }
+    });
+    //计算器功能
+    golb.forEach(function(item) {
+        item.addEventListener('tap', function() {
+            if (!ips.value) {
+                ips.placeholder = "";
+            }
+            if (this.innerHTML == "." && !ips.value) {
+                ips.value = "0."
+            } else if (this.innerHTML == "0" && !ips.value) {
+                ips.value = "0."
+            } else if (this.innerHTML == "X") {
+
+                ips.value = ips.value.substring(0, ips.value.length - 1);
+            } else {
+                ips.value += this.innerHTML;
+            }
+        })
+    });
+    //收入支出高亮显示
+    secon.forEach(function(item, index) {
+        item.addEventListener('tap', function() {
+            if (index == 0) {
+                this.id = "active";
+                secon[1].id = "";
+            } else {
+                this.id = "active";
+                secon[0].id = "";
+            }
+        })
+    });
+    //修改日历样式
+    conts.addEventListener('tap', function() {
+            var y = document.querySelector("[data-id = 'picker-y']");
+            var ty = document.querySelector("[data-id = 'title-y']");
+            var d = document.querySelector("[data-id = 'picker-d']");
+            var td = document.querySelector("[data-id = 'title-d']");
+            var m = document.querySelector("[data-id = 'picker-m']");
+            var tm = document.querySelector("[data-id = 'title-m']");
+            td.style.width = "50%";
+            tm.style.width = "50%";
+            ty.style.display = "none";
+            y.style.display = "none";
+            d.style.width = "50%"
+            m.style.width = "50%"
+            dtPicker.show(function(items) { //日历确定按钮
+                nowdate.innerHTML = `${items.m.text}月${items.d.text}日`;
+                newdatas = `2019-${items.m.text}-${items.d.text}`;
+            });
+        })
+        //补零函数
+    function zero(data) {
+        return data > 10 ? data : "0" + data;
+    }
+</script>
+
+</html>
